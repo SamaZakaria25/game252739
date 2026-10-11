@@ -9,6 +9,10 @@ public class playerController : MonoBehaviour
     public KeyCode Spacebar;
     public KeyCode L;
     public KeyCode R;
+    public Tranform Target;
+    public float Cameraspeed;
+    public float minX  , maxX;
+    public float  minY , maxY;
     void Start()
     {
         
