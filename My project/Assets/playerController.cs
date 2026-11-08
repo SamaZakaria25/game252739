@@ -25,7 +25,7 @@ public class playerController : MonoBehaviour
         Jump();
       }
        if (Input.GetKey(L))  {
-        GetComponent<Rigidbody2D>() . velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
         if(GetComponent<SpriteRenderer>()!=null)
         {
             GetComponent<SpriteRenderer>().flipX = true;
@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
       }
 
       if (Input.GetKey(R))  {
-        GetComponent<Rigidbody2D>() . velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
          if(GetComponent<SpriteRenderer>()!=null)
         {
             GetComponent<SpriteRenderer>().flipX = false;

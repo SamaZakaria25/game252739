@@ -20,6 +20,6 @@ public class checkPoint : MonoBehaviour
 
 {
     if(other.tag == "player")
-    FindObjectOfType<LevelManager>.CurrentCheckPoint= this.gameObject;
+    FindObjectOfType<LevelManager>().CurrentCheckPoint= this.gameObject;
 }
 }

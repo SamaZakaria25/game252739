@@ -10,63 +10,69 @@ public class PlayerStats : MonoBehaviour
     public float flickerDuration = 0.1f;
     private SpriteRenderer sr;
     public bool isImmune = false;
-    privaye float immunityTime = 0f;
-    public float immmunityDuration = 1.5f;
+    private float immunityTime = 0f;
+    public float immunityDuration = 1.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        
     }
-     void SpriteFlicker()
-     (
-        if(flickerTime < flickerDuration)
+
+    void SpriteFlicker()
+    {
+        if (flickerTime < flickerDuration)
         {
-             flickerTime = flickerTime + Time.deltaTime;
+            flickerTime = flickerTime + Time.deltaTime;
         }
-        else if ( flickerTime >= flickerDuration)
+        else if (flickerTime >= flickerDuration)
         {
             sr.enabled = !(sr.enabled);
             flickerTime = 0;
         }
-     )
-     
-     public void TakeDamage(int damage)
-     {
-        if ( isImmune == false )
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isImmune == false)
         {
             health = health - damage;
-            if(health < 0 )
-               health = 0;
-               if ( lives > 0 && health == 0)
-               {
+            if (health < 0)
+            {
+                health = 0;
+            }
+
+            if (lives > 0 && health == 0)
+            {
                 FindObjectOfType<LevelManager>().RespawnPlayer();
                 health = 3;
                 lives--;
-               }
-               else if (lives == 0 && health == 0)
-               {
-                  Debug.log("Game over");
-                  Destroy(this.gameObject);
+            }
+            else if (lives == 0 && health == 0)
+            {
+                Debug.Log("Game over");
+                Destroy(this.gameObject);
+            }
 
-               }
-                 Debug.log("Player Health:" + health.ToString());
-                Debug.log("Player lives:" + .ToString());
+            Debug.Log("Player Health: " + health.ToString());
+            Debug.Log("Player lives: " + lives.ToString());
+
+            isImmune = true;
+            immunityTime = 0f;
         }
-     }
-    // Update is called once per frame
+    }
+
     void Update()
     {
-       if(isImmune == true) 
-       {
-        SpriteFlicker();
-        immunityTime = immunityTime + Time.deltaTime;
-        if(immunityTime >= immmunityDuration)
-        [
-            isImmune = false;
-            sr.enabled = true;
-        ]
-       }
+        if (isImmune == true)
+        {
+            SpriteFlicker();
+            immunityTime = immunityTime + Time.deltaTime;
+            if (immunityTime >= immunityDuration)
+            {
+                isImmune = false;
+                sr.enabled = true;
+            }
+        }
     }
 }
+
